@@ -13,16 +13,16 @@ function HisGauge({ value }) {
             <div 
               key={degree} 
               className="his-mark" 
-              style={{ transform: `rotate(${degree}deg) translateY(-40px)` }}
+              style={{ transform: `rotate(${degree}deg) translateY(-75px) rotate(-${degree}deg)` }}
             >
-              {degree}
+              {degree}°
             </div>
           ))}
         </div>
         
         <div 
           className="his-pointer" 
-          style={{ transform: `rotate(${rotation}deg)` }}
+          style={{ transform: `translate(-50%, -100%) rotate(${rotation}deg)` }}
         ></div>
         
         <div className="his-center-point"></div>

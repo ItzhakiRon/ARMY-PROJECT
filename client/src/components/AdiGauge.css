@@ -1,42 +1,28 @@
 .adi-gauge {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-    border-radius: 50%;
-    border: 2px solid #333;
-    overflow: hidden;
-  }
-  
-  .adi-horizon {
-    position: absolute;
-    width: 100%;
-    height: 200%;
-    top: 0;
-    transform: translateY(50%);
-  }
-  
-  .adi-sky {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 50%;
-    background-color: #0066ff;
-  }
-  
-  .adi-ground {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    background-color: #00cc00;
-  }
-  
-  .adi-value {
-    position: absolute;
-    bottom: -30px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-weight: bold;
-  }
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  overflow: hidden;
+}
+
+.adi-circle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adi-display {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 5px 15px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+  z-index: 10;
+}

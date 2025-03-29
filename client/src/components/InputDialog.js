@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './InputDialog.css';
 
-function InputDialog({ onSubmit, onClose, initialData }) {
+function InputDialog({ onSubmit, onClose, initialData, offlineMode }) {
   const [formData, setFormData] = useState(initialData || {
     altitude: 0,
     his: 0,
@@ -25,6 +25,8 @@ function InputDialog({ onSubmit, onClose, initialData }) {
     <div className="input-dialog-overlay">
       <div className="input-dialog">
         <h3>הזנת נתוני טיסה</h3>
+        
+        
         
         <form onSubmit={handleSubmit}>
           <div className="input-row">
