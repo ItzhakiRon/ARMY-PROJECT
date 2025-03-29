@@ -1,0 +1,383 @@
+/* Dashboard.css - Styling for Pilot Monitoring System */
+
+/* General Layout and Common Styles */
+:root {
+    --primary-color: #1a2a3a;
+    --secondary-color: #2c3e50;
+    --accent-color: #3498db;
+    --text-color: #ecf0f1;
+    --alert-color: #e74c3c;
+    --success-color: #2ecc71;
+    --gauge-border: #34495e;
+    --gauge-background: #2c3e50;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Header Styles */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--accent-color);
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Navigation/Mode Toggle Buttons */
+  .view-toggle {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .toggle-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .toggle-btn:hover {
+    background-color: var(--accent-color);
+  }
+  
+  .toggle-btn.active {
+    background-color: var(--accent-color);
+  }
+  
+  .add-data-btn {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  .add-data-btn:hover {
+    transform: scale(1.1);
+    background-color: #27ae60;
+  }
+  
+  /* Instruments Container */
+  .instruments-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    flex: 1;
+    padding: 20px 0;
+  }
+  
+  /* Common Styles for Visual Instruments */
+  .instrument {
+    background-color: var(--gauge-background);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    position: relative;
+  }
+  
+  .instrument-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: var(--accent-color);
+  }
+  
+  .gauge {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  /* Altitude Gauge (Vertical Bar) */
+  .altitude-gauge {
+    width: 60px;
+    height: 200px;
+    background-color: var(--gauge-background);
+    border: 2px solid var(--gauge-border);
+    position: relative;
+    border-radius: 5px;
+  }
+  
+  .altitude-scale {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 0;
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 25px;
+    font-size: 10px;
+  }
+  
+  .altitude-indicator {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 15px solid blue;
+    position: absolute;
+    left: -15px;
+    transform: translateY(-50%);
+    transition: top 0.5s ease;
+  }
+  
+  /* HIS Gauge (Compass) */
+  .his-gauge {
+    border: 2px solid var(--gauge-border);
+    border-radius: 50%;
+    position: relative;
+    background-color: var(--gauge-background);
+  }
+  
+  .compass-face {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+  }
+  
+  .compass-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 80px solid orange;
+    transform: translate(-50%, -100%) rotate(0deg);
+    transform-origin: bottom center;
+    transition: transform 0.5s ease;
+    z-index: 1;
+  }
+  
+  .compass-center {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  .compass-markings {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .compass-marking {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform-origin: bottom center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* ADI Gauge */
+  .adi-gauge {
+    border: 2px solid var(--gauge-border);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--gauge-background);
+  }
+  
+  .horizon {
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 0.5s ease;
+  }
+  
+  .sky {
+    height: 50%;
+    background-color: #3498db; /* Blue for sky */
+  }
+  
+  .ground {
+    height: 50%;
+    background-color: #2ecc71; /* Green for ground */
+  }
+  
+  .adi-center-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  /* Text Mode Styles */
+  .text-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  .text-value {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+  }
+  
+  .label {
+    font-weight: bold;
+    color: var(--accent-color);
+  }
+  
+  /* Data Input Dialog */
+  .data-input-dialog {
+    background-color: var(--gauge-background);
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    border: 2px solid var(--accent-color);
+  }
+  
+  .data-input-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    font-size: 20px;
+  }
+  
+  .input-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .input-label {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  .input-control {
+    width: 150px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+  }
+  
+  .send-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: auto;
+    transition: background-color 0.3s;
+  }
+  
+  .send-button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .instruments-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .instrument {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  /* Animation for Value Changes */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .value-changed {
+    animation: pulse 0.5s ease;
+  }
+  
+  /* Overlay for Modal */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+  }
+  
+  /* Hide elements when not in their display mode */
+  .hidden {
+    display: none;
+  }
