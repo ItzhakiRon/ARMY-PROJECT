@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const FlightData = require('../FlightData');
+const FlightData = require('./FlightData');
 
 // קבלת כל נתוני הטיסה
 router.get('/flight-data', async (req, res) => {
